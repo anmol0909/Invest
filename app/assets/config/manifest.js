@@ -2,3 +2,13 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link lib/animate/animate.min.css
+//= link lib/lightbox/css/lightbox.min.css
+//= link lib/owlcarousel/assets/owl.carousel.min.css
+//= link lib/wow/wow.min.js
+//= link lib/easing/easing.min.js
+//= link lib/waypoints/waypoints.min.js
+//= link lib/counterup/counterup.min.js
+//= link lib/lightbox/js/lightbox.min.js
+//= link lib/owlcarousel/owl.carousel.min.js
+//= link main.js
