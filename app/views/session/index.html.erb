@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  backdrop-filter: blur(5px);
+}
+
+:root {
+  --black-color: #fff;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: url(<%= asset_path('carousel-1.jpg') %>) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  width: 100%;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: rgba(0, 0, 0, 0.6); 
+  position: absolute; 
+  top: 0;
+  left: 0;
+  z-index: 1000; 
+  border-bottom: 2px ridge rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.back-button ion-icon {
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+<%# .logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 30px;
+  margin-right: 10px;
+} %>
+
+.website-name {
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-box {
+  position: relative;
+  width: 400px;
+  height: 350px;
+  background: transparent;
+  border-radius: 15px;
+  border: 2px solid rgba(19, 255, 145, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--black-color);
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 310px;
+  margin: 30px 0;
+  border-bottom: 1px solid var(--black-color);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: var(--black-color);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: var(--black-color);
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  color: var(--black-color);
+  transform: translateY(-50%);
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(19, 255, 145, 0.8);
+  border: 1px solid #fff;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+</style>
+<body>
+  <div class="header">
+    <a href="/home" class="back-button">
+      <ion-icon name="arrow-back-circle"></ion-icon>
+      Back
+    </a>
+    <%# <div class="logo">
+      <img src="" alt="Website Logo" class="logo-image">
+      <span class="website-name">Your Website</span>
+    </div> %>
+  </div>
+  <div class="wrapper">
+    <div class="login-box">
+      <form action="">
+        <h2>Login</h2>
+
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="phone"></ion-icon>
+          </span>
+          <input type="phone" required>
+          <label>Mobile Number</label>
+        </div>
+
+        <button type="submit">Send OTP</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
