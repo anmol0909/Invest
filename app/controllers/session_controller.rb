@@ -1,5 +1,9 @@
 class SessionController < ApplicationController
-  layout false, only: :index
+  layout false
+
   def index
+  end
+
+  def verify_otp
   end
 end
