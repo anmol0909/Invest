@@ -72,59 +72,94 @@
                                 </div>
                             </div>
                             <div class="bg-light p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
-                                <h4 class="text-primary">Send Your Message</h4>
-                                <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-primary fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                              <h4 class="text-primary">Send Your Message</h4>
+                              <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-primary fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
 
-                                <% if flash[:notice] %>
-                                    <div class="alert alert-success"><%= flash[:notice] %></div>
-                                <% elsif flash[:alert] %>
-                                    <div class="alert alert-danger"><%= flash[:alert] %></div>
-                                <% end %>
-
-
-                                <%= form_with model: @contact, url: contact_index_path, local: true do |form| %>
-                                <div class="row g-4">
-                                    <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <%= form.text_field :name, class: "form-control border-0", placeholder: "Your Name" %>
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <%= form.email_field :email, class: "form-control border-0", placeholder: "Your Email" %>
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <%= form.telephone_field :phone, class: "form-control border-0", placeholder: "Phone" %>
-                                        <label for="phone">Your Phone</label>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <label for="project">Your Project</label>
-                                        <%= form.text_field :project, class: "form-control border-0", placeholder: "Project" %>
-                                    </div>
-                                    </div>
-                                    <div class="col-12">
-                                    <div class="form-floating">
-                                        <label for="subject">Subject</label>
-                                        <%= form.text_field :subject, class: "form-control border-0", placeholder: "Subject" %>
-                                    </div>
-                                    </div>
-                                    <div class="col-12">
-                                    <div class="form-floating">
-                                        <%= form.text_area :message, class: "form-control border-0", placeholder: "Leave a message here", style: "height: 160px" %>
-                                        <label for="message">Message</label>
-                                    </div>
-                                    </div>
-                                    <div class="col-12">
-                                    <%= form.submit "Send Message", class: "btn btn-primary w-100 py-3" %>
-                                    </div>
+                              <% if flash[:notice] %>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  <%= flash[:notice] %>
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <% end %>
+                              <% elsif flash[:alert] %>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <%= flash[:alert] %>
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                              <% end %>
+
+                              <%= form_with model: @contact, url: contact_index_path, local: true do |form| %>
+                                  <div class="row g-4">
+                                      <div class="col-lg-12 col-xl-6">
+                                      <div>
+                                          <label for="name">Your Name</label>
+                                          <%= form.text_field :name, class: "form-control border-0", required: true %>
+                                            <% if @contact.errors[:name].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:name).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-lg-12 col-xl-6">
+                                      <div>
+                                          <label for="email">Your Email</label>
+                                          <%= form.email_field :email, class: "form-control border-0", required: true  %>
+                                          <% if @contact.errors[:email].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:email).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-lg-12 col-xl-6">
+                                      <div>
+                                          <label for="phone">Your Phone</label>
+                                          <%= form.telephone_field :phone, class: "form-control border-0", required: true %>
+                                          <% if @contact.errors[:phone].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:phone).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-lg-12 col-xl-6">
+                                      <div>
+                                          <label for="project">Your Project</label>
+                                          <%= form.text_field :project, class: "form-control border-0"%>
+                                          <% if @contact.errors[:project].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:project).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-12">
+                                      <div>
+                                          <label for="subject">Subject</label>
+                                          <%= form.text_field :subject, class: "form-control border-0", required: true %>
+                                          <% if @contact.errors[:subject].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:subject).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-12">
+                                      <div>
+                                          <label for="message">Message</label>
+                                          <%= form.text_area :message, class: "form-control border-0", style: "height: 160px", required: true %>
+                                          <% if @contact.errors[:message].any? %>
+                                            <div class="text-danger">
+                                              <%= @contact.errors.full_messages_for(:message).join(", ") %>
+                                            </div>
+                                          <% end %>
+                                      </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <%= form.submit "Send Message", class: "btn btn-primary w-100 py-3" %>
+                                      </div>
+                                  </div>
+                              <% end %>
                             </div>
                         </div>
                     </div>
